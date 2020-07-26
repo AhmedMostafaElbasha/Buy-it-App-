@@ -1,16 +1,16 @@
 import 'package:buyit_app/widgets/app_logo.dart';
+import 'package:buyit_app/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import '../widgets/custom_textfield.dart';
-import './signup_screen.dart';
+import 'package:buyit_app/constants.dart';
 
-class LoginScreen extends StatelessWidget {
-  static String routeName = 'LoginScreen';
+class SignupScreen extends StatelessWidget {
+  static String routeName = 'SignupScreen';
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: kMainColor,
       body: Form(
@@ -20,6 +20,13 @@ class LoginScreen extends StatelessWidget {
             AppLogo(height),
             SizedBox(
               height: height * 0.1,
+            ),
+            CustomTextField(
+              icon: Icons.perm_identity,
+              hint: 'Enter your name.',
+            ),
+            SizedBox(
+              height: height * 0.02,
             ),
             CustomTextField(
               icon: Icons.email,
@@ -41,13 +48,13 @@ class LoginScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 onPressed: () {
-                  if(_globalKey.currentState.validate()) {
+                  if (_globalKey.currentState.validate()) {
                     // Do Something
                   }
                 },
                 color: Colors.black,
                 child: Text(
-                  'Sign in',
+                  'Sign up',
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -61,7 +68,7 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Don\'t have an account?  ',
+                  'Do you have an account?  ',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,
@@ -69,10 +76,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed(SignupScreen.routeName);
                   },
                   child: Text(
-                    'Sign up',
+                    'Sign in',
                     style: TextStyle(
                       fontSize: 16,
                     ),
